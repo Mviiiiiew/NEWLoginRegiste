@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
         TextView tvRegisterLink = (TextView) findViewById(R.id.tvRegisterLink);
         Button bLogin = (Button) findViewById(R.id.bSignIn);
+
         Button btn_listuser = (Button) findViewById(R.id.btn_listuser);
         Button btn_barcode = (Button) findViewById(R.id.btn_barcode);
         Button btn_insert = (Button) findViewById(R.id.btn_insert);
