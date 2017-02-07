@@ -1,4 +1,4 @@
-package com.tonikamitv.loginregister;
+package com.tonikamitv.loginregister.activity;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -11,16 +11,20 @@ import android.widget.EditText;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.tonikamitv.loginregister.R;
+import com.tonikamitv.loginregister.dao.RegisterRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class RegisterActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
 
         final EditText etAge = (EditText) findViewById(R.id.etAge);
         final EditText etName = (EditText) findViewById(R.id.etName);
@@ -31,12 +35,13 @@ public class RegisterActivity extends AppCompatActivity {
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String name = etName.getText().toString();
-                final String username = etUsername.getText().toString();
-                final int age = Integer.parseInt(etAge.getText().toString());
-                final String password = etPassword.getText().toString();
+                 String name = etName.getText().toString();
+                 String username = etUsername.getText().toString();
+                 int age = Integer.parseInt(etAge.getText().toString());
+                 String password = etPassword.getText().toString();
 
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                Response.Listener<String> responseListener = new Response.Listener<String>()
+                {
                     @Override
                     public void onResponse(String response) {
                         try {
@@ -59,7 +64,10 @@ public class RegisterActivity extends AppCompatActivity {
                 };
 
                 RegisterRequest registerRequest = new RegisterRequest(name, username, age, password, responseListener);
+
+
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
+
                 queue.add(registerRequest);
             }
         });

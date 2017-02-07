@@ -1,4 +1,4 @@
-package com.tonikamitv.loginregister;
+package com.tonikamitv.loginregister.dao;
 
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginRequest extends StringRequest {
-    private static final String LOGIN_REQUEST_URL = "http://tonikamitv.hostei.com/Login.php";
+    private static final String LOGIN_REQUEST_URL = "http://10.0.3.2/test/Login.php";
     private Map<String, String> params;
 
     public LoginRequest(String username, String password, Response.Listener<String> listener) {
