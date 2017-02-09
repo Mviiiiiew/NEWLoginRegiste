@@ -25,13 +25,9 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
            setContentView(R.layout.activity_search);
             et_barcode = (EditText) findViewById(R.id.et_barcode);
             btn_ok = (Button) findViewById(R.id.btn_ok);
-
-
             btn_ok.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -74,7 +70,6 @@ public class SearchActivity extends AppCompatActivity {
                                             .create()
                                             .show();
                                 }
-
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.tonikamitv.loginregister.Retrofit.activity.ListViewRetrofitActivity;
+import com.tonikamitv.loginregister.Retrofit.activity.RetrofitActivity;
 import com.tonikamitv.loginregister.dao.LoginRequest;
 import com.tonikamitv.loginregister.R;
 
@@ -24,6 +26,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+
+        Button btn_listretrofit = (Button) findViewById(R.id.btn_listretrofit);
+        Button btn_retrofit = (Button) findViewById(R.id.btn_retrofit);
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
         TextView tvRegisterLink = (TextView) findViewById(R.id.tvRegisterLink);
@@ -32,6 +38,21 @@ public class LoginActivity extends AppCompatActivity {
         Button btn_listuser = (Button) findViewById(R.id.btn_listuser);
         Button btn_barcode = (Button) findViewById(R.id.btn_barcode);
         Button btn_insert = (Button) findViewById(R.id.btn_insert);
+
+        btn_listretrofit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registerIntent = new Intent(LoginActivity.this, ListViewRetrofitActivity.class);
+                LoginActivity.this.startActivity(registerIntent);
+            }
+        });
+        btn_retrofit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registerIntent = new Intent(LoginActivity.this, RetrofitActivity.class);
+                LoginActivity.this.startActivity(registerIntent);
+            }
+        });
 
         btn_insert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String name = jsonResponse.getString("name");
                                 int age = jsonResponse.getInt("age");
                                 int id = jsonResponse.getInt("id");
+
                                 Intent intent = new Intent(LoginActivity.this, UserAreaActivity.class);
                                 intent.putExtra("name", name);
                                 intent.putExtra("age", age);

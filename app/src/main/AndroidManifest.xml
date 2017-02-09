@@ -25,6 +25,10 @@
         </activity>
         <activity android:name=".activity.InsertActivity">
         </activity>
+        <activity android:name=".Retrofit.activity.RetrofitActivity">
+        </activity>
+        <activity android:name=".Retrofit.activity.ListViewRetrofitActivity">
+        </activity>
     </application>
 
 </manifest>
