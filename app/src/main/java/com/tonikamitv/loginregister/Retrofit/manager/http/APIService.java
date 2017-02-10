@@ -1,9 +1,10 @@
-package com.tonikamitv.loginregister.Retrofit.api;
+package com.tonikamitv.loginregister.Retrofit.manager.http;
 
 import com.tonikamitv.loginregister.Retrofit.util.UserListRetrofit;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit.Call;
 import retrofit.http.Field;
@@ -17,12 +18,14 @@ import retrofit.http.POST;
 
 public interface APIService {
     @GET("selectRetrofit.php")
-    Call<List<UserListRetrofit>> getPeopleDetails();
-    Call<ArrayList<UserListRetrofit>> getUser();
+
+    Call<List<UserListRetrofit> >loadUserList();
+
 
     @FormUrlEncoded
     @POST("insertUsingRetrofit.php")
-    Call<UserListRetrofit> setPeopleDetails(@Field("name") String name ,@Field("age") String age
+    Call<UserListRetrofit> setPeopleDetails(@Field("name") String name
+            ,@Field("age") String age
             ,@Field("password") String password
             ,@Field("username") String username);
 

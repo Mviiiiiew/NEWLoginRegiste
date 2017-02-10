@@ -95,9 +95,10 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/btn_barcode"
-        android:text="Retrofit" />
+        android:text="Retrofit(Insert+Select)" />
+
     <Button
-        android:id="@+id/btn_listretrofit"
+        android:id="@+id/btn_retrofitcustom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -105,5 +106,5 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/btn_retrofit"
-        android:text="ListViewRetrofit" />
+        android:text="RetrofitListView" />
 </RelativeLayout>

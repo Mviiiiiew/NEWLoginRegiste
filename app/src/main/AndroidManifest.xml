@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -27,7 +28,7 @@
         </activity>
         <activity android:name=".Retrofit.activity.RetrofitActivity">
         </activity>
-        <activity android:name=".Retrofit.activity.ListViewRetrofitActivity">
+        <activity android:name=".Retrofit.activity.RetrofitCustomViewActivity">
         </activity>
     </application>
 

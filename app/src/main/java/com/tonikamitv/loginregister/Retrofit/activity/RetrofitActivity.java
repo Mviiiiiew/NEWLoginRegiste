@@ -10,7 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.tonikamitv.loginregister.R;
-import com.tonikamitv.loginregister.Retrofit.api.APIService;
+import com.tonikamitv.loginregister.Retrofit.manager.HttpManager;
+import com.tonikamitv.loginregister.Retrofit.manager.http.APIService;
 import com.tonikamitv.loginregister.util.UserList;
 import com.tonikamitv.loginregister.Retrofit.util.UserListRetrofit;
 
@@ -64,17 +65,10 @@ public class RetrofitActivity extends AppCompatActivity {
 
     private void getPeopleDetails() {
 
-        showpDialog();
+      showpDialog();
         try {
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://10.0.3.2/test/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
 
-            APIService service = retrofit.create(APIService.class);
-
-            Call<List<UserListRetrofit>> call = service.getPeopleDetails();
-
+            Call<List<UserListRetrofit>> call = HttpManager.getInstance().getService().loadUserList();
             call.enqueue(new Callback<List<UserListRetrofit>>() {
                 @Override
                 public void onResponse(Response<List<UserListRetrofit>> response, Retrofit retrofit) {
@@ -118,15 +112,8 @@ public class RetrofitActivity extends AppCompatActivity {
     private void setPeopleDetails() {
         showpDialog();
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.3.2/test/").
-                        addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        APIService service = retrofit.create(APIService.class);
-        UserList userList = new UserList();
 
-        userList.setName(editName.getText().toString());
 
         String name = editName.getText().toString();
         String age = editAge.getText().toString();
@@ -134,10 +121,9 @@ public class RetrofitActivity extends AppCompatActivity {
         String user = editUser.getText().toString();
 
 
+        Call<UserListRetrofit> call = HttpManager.getInstance().getService().setPeopleDetails(name,age,pass,user);
 
-
-        Call<UserListRetrofit> peopleCall = service.setPeopleDetails(name,age,pass,user);
-        peopleCall.enqueue(new Callback<UserListRetrofit>() {
+        call.enqueue(new Callback<UserListRetrofit>() {
             @Override
             public void onResponse(Response<UserListRetrofit> response, Retrofit retrofit) {
 
