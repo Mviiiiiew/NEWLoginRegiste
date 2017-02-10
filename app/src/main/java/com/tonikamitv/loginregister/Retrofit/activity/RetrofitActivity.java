@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.tonikamitv.loginregister.R;
@@ -15,6 +16,7 @@ import com.tonikamitv.loginregister.Retrofit.manager.http.APIService;
 import com.tonikamitv.loginregister.util.UserList;
 import com.tonikamitv.loginregister.Retrofit.util.UserListRetrofit;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Call;
@@ -31,6 +33,7 @@ public class RetrofitActivity extends AppCompatActivity {
     EditText editUser;
     TextView textDetails;
     Button btnGetData, btnInsertData;
+
     private ProgressDialog pDialog;
 
     @Override
@@ -46,6 +49,7 @@ public class RetrofitActivity extends AppCompatActivity {
         editPass = (EditText) findViewById(R.id.editPass);
         editUser = (EditText) findViewById(R.id.editUser);
 
+
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Please wait...");
         pDialog.setCancelable(false);
@@ -59,13 +63,17 @@ public class RetrofitActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setPeopleDetails();
+                editName.setText("");
+                editAge.setText("");
+                editPass.setText("");
+                editUser.setText("");
             }
         });
     }
 
     private void getPeopleDetails() {
 
-      showpDialog();
+        showpDialog();
         try {
 
             Call<List<UserListRetrofit>> call = HttpManager.getInstance().getService().loadUserList();
@@ -75,7 +83,7 @@ public class RetrofitActivity extends AppCompatActivity {
                     List<UserListRetrofit> userLists = response.body();
                     String details = "";
                     for (int i = 0; i < userLists.size(); i++) {
-                        String id = userLists.get(i).getUserId()+"";
+                        String id = userLists.get(i).getUserId() + "";
                         String name = userLists.get(i).getName();
                         String user = userLists.get(i).getUsername();
                         String age = userLists.get(i).getAge();
@@ -84,10 +92,10 @@ public class RetrofitActivity extends AppCompatActivity {
                         Log.d("IDxxxx", "ID" + id);
 
                         details += "ID: " + id + "\n" +
-                                "Name: " + name + "\n"+
-                                  "Age: " + age + "\n"+
-                        "Username: " + user + "\n"+
-                        "Password: " + pass + "\n\n";
+                                "Name: " + name + "\n" +
+                                "Age: " + age + "\n" +
+                                "Username: " + user + "\n" +
+                                "Password: " + pass + "\n\n";
 
 
                     }
@@ -112,17 +120,13 @@ public class RetrofitActivity extends AppCompatActivity {
     private void setPeopleDetails() {
         showpDialog();
 
-
-
-
         String name = editName.getText().toString();
         String age = editAge.getText().toString();
         String pass = editPass.getText().toString();
         String user = editUser.getText().toString();
 
 
-        Call<UserListRetrofit> call = HttpManager.getInstance().getService().setPeopleDetails(name,age,pass,user);
-
+        Call<UserListRetrofit> call = HttpManager.getInstance().getService().setPeopleDetails(name, age, pass, user);
         call.enqueue(new Callback<UserListRetrofit>() {
             @Override
             public void onResponse(Response<UserListRetrofit> response, Retrofit retrofit) {

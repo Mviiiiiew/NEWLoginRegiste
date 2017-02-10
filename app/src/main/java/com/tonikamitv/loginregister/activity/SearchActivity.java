@@ -45,7 +45,7 @@ public class SearchActivity extends AppCompatActivity {
                                     String password = jsonResponse.getString("password");
                                     String username = jsonResponse.getString("username");
                                     int age = jsonResponse.getInt("age");
-                                    int id = jsonResponse.getInt("id");
+                                    int id = jsonResponse.getInt("user_id");
 
                                     Log.d("debug","NAME = "+name);
 

@@ -29,6 +29,10 @@ public interface APIService {
             ,@Field("password") String password
             ,@Field("username") String username);
 
+    @FormUrlEncoded
+    @POST("Barcode.php")
+    Call<UserListRetrofit> searchbarcode(@Field("barcode") String barcode  ) ;
+
 
 
 }

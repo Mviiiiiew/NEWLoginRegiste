@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.tonikamitv.loginregister.Retrofit.activity.BarcodeRetrofitActivity;
 import com.tonikamitv.loginregister.Retrofit.activity.RetrofitActivity;
 import com.tonikamitv.loginregister.Retrofit.activity.RetrofitCustomViewActivity;
 import com.tonikamitv.loginregister.dao.LoginRequest;
@@ -35,11 +36,21 @@ public class LoginActivity extends AppCompatActivity {
         TextView tvRegisterLink = (TextView) findViewById(R.id.tvRegisterLink);
         Button bLogin = (Button) findViewById(R.id.bSignIn);
         Button btn_retrofitcustom = (Button) findViewById(R.id.btn_retrofitcustom);
+        Button btn_seachbarcode = (Button) findViewById(R.id.btn_seachbarcode);
 
 
         Button btn_listuser = (Button) findViewById(R.id.btn_listuser);
         Button btn_barcode = (Button) findViewById(R.id.btn_barcode);
         Button btn_insert = (Button) findViewById(R.id.btn_insert);
+
+        btn_seachbarcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registerIntent = new Intent(LoginActivity.this, BarcodeRetrofitActivity.class);
+                LoginActivity.this.startActivity(registerIntent);
+            }
+        });
+
         btn_retrofitcustom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
