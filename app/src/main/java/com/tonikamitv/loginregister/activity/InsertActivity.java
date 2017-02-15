@@ -48,6 +48,7 @@ public class InsertActivity extends AppCompatActivity {
         etPassword = (EditText) findViewById(R.id.etPassword);
         bRegister = (Button) findViewById(R.id.bRegister);
 
+
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

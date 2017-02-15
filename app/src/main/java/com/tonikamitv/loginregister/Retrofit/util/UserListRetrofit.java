@@ -25,6 +25,15 @@ public class UserListRetrofit  {
     @Expose
     private String username;
 
+    public UserListRetrofit(String name, String userId, String age, String password, String username) {
+        this.age =age;
+        this.name = name;
+        this.password =password;
+        this.userId = userId;
+        this.username = username;
+    }
+
+
     public String getUserId() {
         return userId;
     }

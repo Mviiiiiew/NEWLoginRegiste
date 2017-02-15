@@ -3,6 +3,7 @@ package com.tonikamitv.loginregister.Retrofit.activity;
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import com.tonikamitv.loginregister.Retrofit.manager.UserListManager;
 import com.tonikamitv.loginregister.Retrofit.util.UserListRetrofit;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Call;
@@ -32,6 +34,10 @@ public class RetrofitCustomViewActivity extends AppCompatActivity {
     SpinnerUserAdapter userAdapter;
     Button btn_ok;
     UserListRetrofit userList;
+    SearchView searchItem;
+    private ProgressDialog mLoading;
+
+
 
 
     @Override
@@ -39,11 +45,30 @@ public class RetrofitCustomViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrofit_custom_view);
 
+        mLoading = new ProgressDialog(this);
+        mLoading.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mLoading.setMessage("Loading....");
+
         spiner_User = (Spinner) findViewById(R.id.spiner_User);
         btn_ok = (Button) findViewById(R.id.btn_ok);
         listview = (ListView) findViewById(R.id.listview);
-        adapter = new RetrofitAdapter();
-        listview.setAdapter(adapter);
+
+        mLoading.show();
+        searchItem = (SearchView)findViewById(R.id.searchItem);
+        searchItem.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+
 
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,28 +97,33 @@ public class RetrofitCustomViewActivity extends AppCompatActivity {
         });
 
 
-        Call<List<UserListRetrofit>> call = HttpManager.getInstance().getService().loadUserList();
-        call.enqueue(new Callback<List<UserListRetrofit>>() {
+        Call<ArrayList<UserListRetrofit>> call = HttpManager.getInstance().getService().loadUserList();
+        call.enqueue(new Callback<ArrayList<UserListRetrofit>>() {
             @Override
-            public void onResponse(Response<List<UserListRetrofit>> response, Retrofit retrofit) {
+            public void onResponse(Response<ArrayList<UserListRetrofit>> response, Retrofit retrofit) {
 
                 if (response.isSuccess()) {
 
-                    List<UserListRetrofit> dao = response.body();
+                    ArrayList<UserListRetrofit>  dao = response.body();
                     UserListManager.getInstance().setDao(dao);
                     userAdapter = new SpinnerUserAdapter(RetrofitCustomViewActivity.this, dao);
                     spiner_User.setAdapter(userAdapter);
+                    adapter = new RetrofitAdapter(dao);
+                    listview.setAdapter(adapter);
                     userAdapter.notifyDataSetChanged();
                     adapter.notifyDataSetChanged();
                     Toast.makeText(RetrofitCustomViewActivity.this, dao.get(0).getUserId(), Toast.LENGTH_LONG).show();
+                    mLoading.dismiss();
                 } else {
                     try {
 
                         Toast.makeText(RetrofitCustomViewActivity.this,
                                 response.errorBody().string(), Toast.LENGTH_LONG).show();
+                        mLoading.dismiss();
                     } catch (IOException e) {
 
                         e.printStackTrace();
+                        mLoading.dismiss();
                     }
                 }
 
@@ -104,7 +134,7 @@ public class RetrofitCustomViewActivity extends AppCompatActivity {
             public void onFailure(Throwable t) {
                 Toast.makeText(RetrofitCustomViewActivity.this,
                         t.toString(), Toast.LENGTH_LONG).show();
-
+                mLoading.dismiss();
             }
         });
 

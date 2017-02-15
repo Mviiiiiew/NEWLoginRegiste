@@ -25,6 +25,11 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
 
         />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:background="#000000"
+        />
 
 
 

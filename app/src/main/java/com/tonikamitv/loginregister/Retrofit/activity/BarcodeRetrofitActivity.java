@@ -60,7 +60,7 @@ public class BarcodeRetrofitActivity extends AppCompatActivity {
 
                         Toast.makeText(BarcodeRetrofitActivity.this, details, Toast.LENGTH_SHORT).show();
 
-
+                        et_barcode.setText("");
                     }
 
                     @Override

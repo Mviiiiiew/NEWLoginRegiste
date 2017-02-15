@@ -53,6 +53,7 @@ public class RetrofitActivity extends AppCompatActivity {
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Please wait...");
         pDialog.setCancelable(false);
+
         btnGetData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,10 +77,10 @@ public class RetrofitActivity extends AppCompatActivity {
         showpDialog();
         try {
 
-            Call<List<UserListRetrofit>> call = HttpManager.getInstance().getService().loadUserList();
-            call.enqueue(new Callback<List<UserListRetrofit>>() {
+            Call<ArrayList<UserListRetrofit>> call = HttpManager.getInstance().getService().loadUserList();
+            call.enqueue(new Callback<ArrayList<UserListRetrofit>>() {
                 @Override
-                public void onResponse(Response<List<UserListRetrofit>> response, Retrofit retrofit) {
+                public void onResponse(Response<ArrayList<UserListRetrofit>> response, Retrofit retrofit) {
                     List<UserListRetrofit> userLists = response.body();
                     String details = "";
                     for (int i = 0; i < userLists.size(); i++) {

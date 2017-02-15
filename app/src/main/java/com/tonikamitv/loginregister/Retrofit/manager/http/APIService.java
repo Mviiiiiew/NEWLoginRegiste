@@ -19,7 +19,7 @@ import retrofit.http.POST;
 public interface APIService {
     @GET("selectRetrofit.php")
 
-    Call<List<UserListRetrofit> >loadUserList();
+    Call<ArrayList<UserListRetrofit> >loadUserList();
 
 
     @FormUrlEncoded

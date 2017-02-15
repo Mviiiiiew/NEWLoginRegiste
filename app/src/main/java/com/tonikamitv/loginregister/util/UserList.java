@@ -12,6 +12,19 @@ public class UserList {
     int age;
     String username;
 
+
+    public UserList() {
+
+    }
+
+    public UserList(String name, int id, String password, int age, String username) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.age = age;
+        this.username = username;
+    }
+
     public int getId() {
         return id;
     }

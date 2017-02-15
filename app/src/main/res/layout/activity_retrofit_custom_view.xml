@@ -9,6 +9,32 @@
     android:weightSum="2"
     tools:context="com.tonikamitv.loginregister.Retrofit.activity.RetrofitCustomViewActivity">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_weight="0.2"
+    android:layout_height="0dp">
+    <include
+        layout="@layout/toolbarsearch"
+        />
+
+
+    <android.support.v7.widget.SearchView
+        android:id="@+id/searchItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="60dp"
+        android:layout_centerVertical="true"
+
+        >
+
+    </android.support.v7.widget.SearchView>
+
+
+
+</RelativeLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,6 +59,7 @@
             android:textSize="30sp"/>
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
@@ -43,7 +70,7 @@
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.7">
+        android:layout_weight="1.5">
 
     </ListView>
 

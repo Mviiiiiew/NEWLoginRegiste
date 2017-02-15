@@ -22,17 +22,17 @@ public class UserListManager {
     }
 
     private Context mContext;
-    private List <UserListRetrofit> dao;
+    private ArrayList <UserListRetrofit> dao;
 
     private UserListManager() {
         mContext = Contextor.getInstance().getContext();
     }
 
-    public List<UserListRetrofit> getDao() {
+    public ArrayList<UserListRetrofit> getDao() {
         return dao;
     }
 
-    public void setDao(List<UserListRetrofit> dao) {
+    public void setDao(ArrayList<UserListRetrofit> dao) {
         this.dao = dao;
     }
 }

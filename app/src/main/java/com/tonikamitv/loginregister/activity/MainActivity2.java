@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -40,6 +41,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
     private spinnerProductAdapter mspinnerProductAdapter;
     private UserList mUserList;
     Button btn_Ok;
+    SearchView searchItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,22 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         data = new ArrayList<UserList>();
         spinner = new ArrayList<>();
         new AsyncFetch().execute();
+
+        searchItem = (SearchView)findViewById(R.id.searchItem);
+
+        searchItem.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
 
         btn_Ok = (Button)findViewById(R.id.btn_Ok);
         btn_Ok.setOnClickListener(this);
