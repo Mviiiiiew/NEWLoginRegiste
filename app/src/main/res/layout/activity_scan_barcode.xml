@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_search"
-    android:orientation="vertical"
+    android:id="@+id/activity_scan_barcode"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="com.tonikamitv.loginregister.activity.SearchActivity">
+    tools:context="com.tonikamitv.loginregister.activity.ScanBarcodeActivity">
 
-    <EditText
-        android:id="@+id/et_barcode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:hint="Barcode"/>
-    <Button
-        android:id="@+id/btn_ok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="OK"/>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
     <TextView
         android:id="@+id/textContent"
         android:layout_width="wrap_content"
@@ -43,5 +27,3 @@
         android:layout_marginTop="42dp"
         android:text="Scan QR/Barcode" />
 </RelativeLayout>
-
-</LinearLayout>

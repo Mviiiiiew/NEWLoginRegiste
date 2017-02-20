@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -36,7 +37,6 @@ public class RetrofitCustomViewActivity extends AppCompatActivity {
     UserListRetrofit userList;
     SearchView searchItem;
     private ProgressDialog mLoading;
-
 
 
 

@@ -22,6 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
 
 public class InsertActivity extends AppCompatActivity {
 
@@ -120,7 +121,7 @@ public class InsertActivity extends AppCompatActivity {
 
                 // Open connection for sending data
                 OutputStream os = conn.getOutputStream();
-                BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(os, "UTF-8"));
+                BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(os, Charset.forName("UTF-8")));
                /* String post_data = URLEncoder.encode("name","UTF-8")+"=" +URLEncoder.encode(name,"UTF-8")+"&"
                         + URLEncoder.encode("password","UTF-8")+"=" +URLEncoder.encode(password,"UTF-8")+"&"
                         + URLEncoder.encode("username","UTF-8")+"=" +URLEncoder.encode(username,"UTF-8")+"&"

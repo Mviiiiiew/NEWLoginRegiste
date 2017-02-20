@@ -37,11 +37,19 @@ public class LoginActivity extends AppCompatActivity {
         Button bLogin = (Button) findViewById(R.id.bSignIn);
         Button btn_retrofitcustom = (Button) findViewById(R.id.btn_retrofitcustom);
         Button btn_seachbarcode = (Button) findViewById(R.id.btn_seachbarcode);
-
+        Button btn_scanbarcode = (Button) findViewById(R.id.btn_scanbarcode);
 
         Button btn_listuser = (Button) findViewById(R.id.btn_listuser);
         Button btn_barcode = (Button) findViewById(R.id.btn_barcode);
         Button btn_insert = (Button) findViewById(R.id.btn_insert);
+
+        btn_scanbarcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registerIntent = new Intent(LoginActivity.this, ScanBarcodeActivity.class);
+                LoginActivity.this.startActivity(registerIntent);
+            }
+        });
 
         btn_seachbarcode.setOnClickListener(new View.OnClickListener() {
             @Override

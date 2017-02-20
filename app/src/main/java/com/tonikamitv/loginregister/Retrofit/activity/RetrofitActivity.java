@@ -126,27 +126,29 @@ public class RetrofitActivity extends AppCompatActivity {
         String pass = editPass.getText().toString();
         String user = editUser.getText().toString();
 
+        for (int i = 0; i < 5000; i++) {
+            Call<UserListRetrofit> call = HttpManager.getInstance().getService().setPeopleDetails(name+i, age+i, pass+i, user+i);
 
-        Call<UserListRetrofit> call = HttpManager.getInstance().getService().setPeopleDetails(name, age, pass, user);
-        call.enqueue(new Callback<UserListRetrofit>() {
-            @Override
-            public void onResponse(Response<UserListRetrofit> response, Retrofit retrofit) {
+            call.enqueue(new Callback<UserListRetrofit>() {
+                @Override
+                public void onResponse(Response<UserListRetrofit> response, Retrofit retrofit) {
 
 
-                hidepDialog();
-                Log.d("onResponse", "" + response.code() +
-                        "  response body " + response.body() +
-                        " responseError " + response.errorBody() + " responseMessage " +
-                        response.message());
-            }
+                    hidepDialog();
+                    /*Log.d("onResponse", "" + response.code() +
+                            "  response body " + response.body() +
+                            " responseError " + response.errorBody() + " responseMessage " +
+                            response.message());*/
+                }
 
-            @Override
-            public void onFailure(Throwable t) {
-                hidepDialog();
-                Log.d("onFailure", t.toString());
-            }
-        });
+                @Override
+                public void onFailure(Throwable t) {
+                    hidepDialog();
+                    Log.d("onFailure", t.toString());
+                }
+            });
 
+        }
     }
 
     private void showpDialog() {
