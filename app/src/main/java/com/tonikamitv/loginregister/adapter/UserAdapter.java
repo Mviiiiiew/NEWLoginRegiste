@@ -96,7 +96,8 @@ public class UserAdapter extends BaseAdapter implements Filterable {
                                 , filterList.get(i).getId()
                                 , filterList.get(i).getPassword()
                                 , filterList.get(i).getAge()
-                                , filterList.get(i).getUsername());
+                                , filterList.get(i).getUsername()
+                               );
                         filters.add(u);
                     }
                 }

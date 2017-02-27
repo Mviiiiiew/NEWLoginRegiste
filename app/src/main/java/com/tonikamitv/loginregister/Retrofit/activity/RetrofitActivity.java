@@ -126,8 +126,8 @@ public class RetrofitActivity extends AppCompatActivity {
         String pass = editPass.getText().toString();
         String user = editUser.getText().toString();
 
-        for (int i = 0; i < 5000; i++) {
-            Call<UserListRetrofit> call = HttpManager.getInstance().getService().setPeopleDetails(name+i, age+i, pass+i, user+i);
+
+            Call<UserListRetrofit> call = HttpManager.getInstance().getService().setPeopleDetails(name, age, pass, user);
 
             call.enqueue(new Callback<UserListRetrofit>() {
                 @Override
@@ -135,10 +135,10 @@ public class RetrofitActivity extends AppCompatActivity {
 
 
                     hidepDialog();
-                    /*Log.d("onResponse", "" + response.code() +
+                    Log.d("onResponse", "" + response.code() +
                             "  response body " + response.body() +
                             " responseError " + response.errorBody() + " responseMessage " +
-                            response.message());*/
+                            response.message());
                 }
 
                 @Override
@@ -148,7 +148,7 @@ public class RetrofitActivity extends AppCompatActivity {
                 }
             });
 
-        }
+
     }
 
     private void showpDialog() {

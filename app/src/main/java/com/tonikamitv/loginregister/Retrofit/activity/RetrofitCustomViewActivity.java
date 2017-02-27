@@ -88,6 +88,7 @@ public class RetrofitCustomViewActivity extends AppCompatActivity {
 
             }
         });
+
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
