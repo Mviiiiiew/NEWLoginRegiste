@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -50,6 +49,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         data = new ArrayList<UserList>();
         spinner = new ArrayList<>();
         new AsyncFetch().execute();
+
 
         searchItem = (SearchView)findViewById(R.id.searchItem);
 

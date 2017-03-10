@@ -24,7 +24,8 @@ public interface APIService {
 
     @FormUrlEncoded
     @POST("insertUsingRetrofit.php")
-    Call<UserListRetrofit> setPeopleDetails(@Field("name") String name
+    Call<UserListRetrofit> setPeopleDetails
+            (@Field("name") String name
             ,@Field("age") String age
             ,@Field("password") String password
             ,@Field("username") String username);

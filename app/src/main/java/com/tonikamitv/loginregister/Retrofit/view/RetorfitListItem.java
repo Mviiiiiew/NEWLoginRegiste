@@ -103,7 +103,7 @@ public class RetorfitListItem extends BaseCustomViewGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int width = MeasureSpec.getSize(widthMeasureSpec);
-        int height = width *2/5;
+        int height = width *4/6;
         int newHeightMeasureSpec = MeasureSpec.makeMeasureSpec(
                 height,MeasureSpec.EXACTLY
         );

@@ -50,6 +50,7 @@ public class BarcodeRetrofitActivity extends AppCompatActivity {
                         String age = userLists.getAge();
                         String pass = userLists.getPassword();
 
+
                         Log.d("IDxxxx", "ID" + id);
 
                         details += "ID: " + id + "\n" +

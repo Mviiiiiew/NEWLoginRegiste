@@ -7,9 +7,9 @@ package com.tonikamitv.loginregister.util;
 public class UserList {
 
     int id;
+    int age;
     String name;
     String password;
-    int age;
     String username;
 
 
