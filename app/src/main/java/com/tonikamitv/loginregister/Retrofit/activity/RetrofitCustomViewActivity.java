@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.tonikamitv.loginregister.R;
 import com.tonikamitv.loginregister.Retrofit.adapter.RetrofitAdapter;
+import com.tonikamitv.loginregister.Retrofit.adapter.RetrofitAdapter2;
 import com.tonikamitv.loginregister.Retrofit.adapter.SpinnerUserAdapter;
 import com.tonikamitv.loginregister.Retrofit.manager.HttpManager;
 import com.tonikamitv.loginregister.Retrofit.manager.UserListManager;
@@ -30,13 +32,16 @@ import retrofit.Retrofit;
 
 public class RetrofitCustomViewActivity extends AppCompatActivity {
     ListView listview;
-    RetrofitAdapter adapter;
+    RetrofitAdapter2 adapter;
     Spinner spiner_User;
     SpinnerUserAdapter userAdapter;
     Button btn_ok;
     UserListRetrofit userList;
     SearchView searchItem;
+
+
     private ProgressDialog mLoading;
+    Button btn_checkbox;
 
 
 
@@ -51,7 +56,9 @@ public class RetrofitCustomViewActivity extends AppCompatActivity {
 
         spiner_User = (Spinner) findViewById(R.id.spiner_User);
         btn_ok = (Button) findViewById(R.id.btn_ok);
+        btn_checkbox = (Button)findViewById(R.id.btn_checkbox);
         listview = (ListView) findViewById(R.id.listview);
+
 
         mLoading.show();
         searchItem = (SearchView)findViewById(R.id.searchItem);
@@ -68,7 +75,24 @@ public class RetrofitCustomViewActivity extends AppCompatActivity {
             }
         });
 
+btn_checkbox.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        StringBuffer responseText = new StringBuffer();
+        responseText.append("The following were selected...\n");
+        ArrayList<UserListRetrofit> userListRetrofits = adapter.userListRetrofits ;
+        Log.d("Sizex","Size:"+userListRetrofits.size());
+        for(int i=0;i<userListRetrofits.size();i++){
+            UserListRetrofit userListRetrofit = userListRetrofits.get(i);
+            if(userListRetrofit.isSelected()){
+                responseText.append("\n" + userListRetrofit.getName());
+            }
+        }
+        Toast.makeText(getApplicationContext(),
+                responseText, Toast.LENGTH_LONG).show();
 
+    }
+});
 
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,14 +129,16 @@ public class RetrofitCustomViewActivity extends AppCompatActivity {
 
                 if (response.isSuccess()) {
 
-                    ArrayList<UserListRetrofit>  dao = response.body();
+                    final ArrayList<UserListRetrofit>  dao = response.body();
                     UserListManager.getInstance().setDao(dao);
                     userAdapter = new SpinnerUserAdapter(RetrofitCustomViewActivity.this, dao);
                     spiner_User.setAdapter(userAdapter);
-                    adapter = new RetrofitAdapter(dao);
+                    adapter = new RetrofitAdapter2(RetrofitCustomViewActivity.this,dao);
+
                     listview.setAdapter(adapter);
                     userAdapter.notifyDataSetChanged();
                     adapter.notifyDataSetChanged();
+
                     Toast.makeText(RetrofitCustomViewActivity.this, dao.get(0).getUserId(), Toast.LENGTH_LONG).show();
                     mLoading.dismiss();
                 } else {
