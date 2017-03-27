@@ -55,5 +55,9 @@
         android:text="age"
         android:textAppearance="?android:attr/textAppearanceSmall"
         />
+    <CheckBox
+        android:id="@+id/cb_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

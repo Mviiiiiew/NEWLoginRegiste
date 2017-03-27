@@ -30,6 +30,8 @@ public class RetrofitAdapter extends BaseAdapter implements Filterable {
     ArrayList<UserListRetrofit> userListRetrofits = UserListManager.getInstance().getDao();
     CustomFilter filter;
 
+
+
     public RetrofitAdapter(ArrayList<UserListRetrofit> userListRetrofits) {
         this.userListRetrofits = userListRetrofits;
         this.filterList = userListRetrofits;
@@ -61,16 +63,17 @@ public class RetrofitAdapter extends BaseAdapter implements Filterable {
         RetorfitListItem item;
         if (view != null)
             item = (RetorfitListItem) view;
+
         else
+
             item = new RetorfitListItem(viewGroup.getContext());
-
-
         UserListRetrofit dao = userListRetrofits.get(position);
         item.setNameText(dao.getName());
         item.setID(dao.getUserId());
         item.setAgeText(dao.getAge());
         item.setPassText(dao.getPassword());
         item.setUserText(dao.getUsername());
+
         return item;
     }
 

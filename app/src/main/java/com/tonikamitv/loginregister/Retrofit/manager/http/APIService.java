@@ -11,6 +11,7 @@ import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
+import retrofit2.http.PUT;
 
 /**
  * Created by Wasabi on 2/9/2017.

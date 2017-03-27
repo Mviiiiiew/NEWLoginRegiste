@@ -16,6 +16,11 @@
     <include
         layout="@layout/toolbarsearch"
         />
+    <Button
+        android:id="@+id/btn_checkbox"
+        android:layout_width="wrap_content"
+        android:text="Check Choic"
+        android:layout_height="wrap_content"/>
 
 
     <android.support.v7.widget.SearchView
@@ -23,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#ffffff"
+        android:layout_toRightOf="@+id/btn_checkbox"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="60dp"
         android:layout_centerVertical="true"

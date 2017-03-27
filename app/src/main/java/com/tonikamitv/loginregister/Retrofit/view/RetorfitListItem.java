@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.inthecheesefactory.thecheeselibrary.view.BaseCustomViewGroup;
@@ -15,11 +16,22 @@ import com.tonikamitv.loginregister.R;
  * Created by nuuneoi on 11/16/2014.
  */
 public class RetorfitListItem extends BaseCustomViewGroup {
-    TextView txt_pass ;
-    TextView txt_age ;
-    TextView txt_username ;
-    TextView txt_name ;
-    TextView txt_id ;
+    TextView txt_pass;
+    TextView txt_age;
+    TextView txt_username;
+    TextView txt_name;
+    TextView txt_id;
+    CheckBox cb_user;
+
+    private class ViewHolder {
+        TextView txt_pass ;
+        TextView txt_age ;
+        TextView txt_username ;
+        TextView txt_name ;
+        TextView txt_id;
+        CheckBox cb_user ;
+
+    }
 
 
     public RetorfitListItem(Context context) {
@@ -55,11 +67,17 @@ public class RetorfitListItem extends BaseCustomViewGroup {
     }
 
     private void initInstances() {
-         txt_pass = (TextView) findViewById(R.id.txt_pass);
-         txt_age = (TextView) findViewById(R.id.txt_age);
-         txt_username = (TextView) findViewById(R.id.txt_username);
-         txt_name = (TextView) findViewById(R.id.txt_name);
-         txt_id = (TextView) findViewById(R.id.txt_id);
+        txt_pass = (TextView) findViewById(R.id.txt_pass);
+        txt_age = (TextView) findViewById(R.id.txt_age);
+        txt_username = (TextView) findViewById(R.id.txt_username);
+        txt_name = (TextView) findViewById(R.id.txt_name);
+        txt_id = (TextView) findViewById(R.id.txt_id);
+        cb_user = (CheckBox) findViewById(R.id.cb_user);
+
+
+
+
+
 
         // findViewById here
     }
@@ -103,27 +121,43 @@ public class RetorfitListItem extends BaseCustomViewGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int width = MeasureSpec.getSize(widthMeasureSpec);
-        int height = width *4/6;
+        int height = width * 3 / 6;
         int newHeightMeasureSpec = MeasureSpec.makeMeasureSpec(
-                height,MeasureSpec.EXACTLY
+                height, MeasureSpec.EXACTLY
         );
         super.onMeasure(widthMeasureSpec, newHeightMeasureSpec);
-        setMeasuredDimension(width,height);
+        setMeasuredDimension(width, height);
 
     }
-    public  void  setNameText(String text){
+
+    public void setNameText(String text) {
         txt_name.setText(text);
     }
-    public  void  setID(String text){
+
+    public void setID(String text) {
         txt_id.setText(text);
     }
-    public  void  setAgeText(String text){
+
+    public void setAgeText(String text) {
         txt_age.setText(text);
     }
-    public  void  setPassText(String text){
+
+    public void setPassText(String text) {
         txt_pass.setText(text);
     }
-    public  void  setUserText(String text){
+
+    public void setUserText(String text) {
         txt_username.setText(text);
     }
+    public void cbsetAll(String Username,String Password,String Age,String Name,String UserId) {
+        txt_username.setText(Username);
+        txt_pass.setText(Password);
+        txt_age.setText(Age);
+        txt_name.setText(Name);
+        txt_id.setText(UserId);
+
+    }
+
+
+
 }

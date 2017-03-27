@@ -8,19 +8,33 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class UserListRetrofit  {
+    boolean selected = false;
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
 
     @SerializedName("user_id")
+
     @Expose
+
     private String userId;
     @SerializedName("name")
     @Expose
+
     private String name;
     @SerializedName("age")
     @Expose
+
     private String age;
     @SerializedName("password")
     @Expose
     private String password;
+
     @SerializedName("username")
     @Expose
     private String username;

@@ -25,6 +25,8 @@ public class HttpManager {
     private APIService service;
 
     private HttpManager() {
+
+
         mContext = Contextor.getInstance().getContext();
 
         Retrofit retrofit = new Retrofit.Builder()
